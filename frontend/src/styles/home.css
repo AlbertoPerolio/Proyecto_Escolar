@@ -1,15 +1,4 @@
 /* =========================
-   ESTILO GENERAL
-========================= */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f6f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s ease;
-}
-
-/* =========================
    CONTENEDOR PRINCIPAL
 ========================= */
 .home-container {

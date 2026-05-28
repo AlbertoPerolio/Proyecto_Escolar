@@ -1,15 +1,4 @@
 /* =====================================================
-   DASHBOARD MODERNO + DARK MODE
-===================================================== */
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #000000;
-}
-
-/* =====================================================
    CONTENEDOR PRINCIPAL
 ===================================================== */
 
@@ -536,19 +525,7 @@ body {
    MODAL
 ===================================================== */
 
-.modal-overlay {
-    position: fixed;
-    inset: 0;
 
-    background: rgba(0, 0, 0, 0.55);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 9999;
-
-}
 
 
 
