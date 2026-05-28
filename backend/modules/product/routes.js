@@ -91,6 +91,13 @@ router.post(
       next(err);
     }
   },
+  // Manejo de errores de Multer (p.ej. archivo mayor al límite)
+  (err, req, res, next) => {
+    if (err?.code === "LIMIT_FILE_SIZE") {
+      return answers.error(req, res, "La imagen supera el límite de 5MB", 400);
+    }
+    return next(err);
+  },
 );
 
 // 4. Actualizar Producto -> Protegida (Multer primero, Zod segundo)
@@ -112,6 +119,13 @@ router.put(
     } catch (err) {
       next(err);
     }
+  },
+  // Manejo de errores de Multer (p.ej. archivo mayor al límite)
+  (err, req, res, next) => {
+    if (err?.code === "LIMIT_FILE_SIZE") {
+      return answers.error(req, res, "La imagen supera el límite de 5MB", 400);
+    }
+    return next(err);
   },
 );
 
