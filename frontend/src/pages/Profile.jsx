@@ -242,7 +242,11 @@ export default function Profile() {
       setIsModalOpen(false);
       fetchProducts(); // Recargamos la lista
     } catch (err) {
-      alert(err.response?.data?.body || "Error al procesar el producto");
+      alert(
+        err.response?.data?.body ||
+          err.response?.data?.message ||
+          "Error al procesar el producto",
+      );
     }
   };
 
