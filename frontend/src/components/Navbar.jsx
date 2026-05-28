@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <Link to="/">📚 Materiales</Link>
+        <Link to="/">Materiales Escolares</Link>
       </div>
 
       <div className="navbar-links">
@@ -27,7 +27,7 @@ export default function Navbar() {
               className="cart-icon-link"
               style={{ marginRight: "15px" }}
             >
-              🛒 Carrito
+              Carrito
             </Link>
 
             {/* 👤 Transformamos el saludo en un link al perfil */}

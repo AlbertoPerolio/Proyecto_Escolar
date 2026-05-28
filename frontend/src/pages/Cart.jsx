@@ -9,7 +9,7 @@ export default function Cart() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // 📍 Direcciones del usuario guardadas en tu backend
+  //  Direcciones del usuario guardadas en tu backend
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState("");
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -409,11 +409,13 @@ export default function Cart() {
 
             <hr />
             <div className="summary-row">
-              <span>Productos ({cartItems.length}):</span>
+              <span className="total-label">
+                Productos ({cartItems.length}):
+              </span>
               <span>${calculateTotal().toLocaleString("es-AR")}</span>
             </div>
             <div className="summary-row total">
-              <span>Total:</span>
+              <span className="total-label">Total:</span>
               <span>${calculateTotal().toLocaleString("es-AR")}</span>
             </div>
 
@@ -436,7 +438,7 @@ export default function Cart() {
       {showAddressModal && (
         <div className="modal-overlay">
           <div className="address-modal-card">
-            <h3>📍 Registrar nueva dirección de envío</h3>
+            <h3> Registrar nueva dirección de envío</h3>
             <form onSubmit={handleSaveAddress}>
               <div className="form-grid-2">
                 <div className="form-group">
@@ -457,7 +459,9 @@ export default function Cart() {
                   <label>Número de Calle *</label>
                   <input
                     type="number"
-                    required // Cambiado a type="number" para guiar al usuario
+                    min="0"
+                    step="1"
+                    required
                     value={newAddressData.number}
                     onChange={(e) =>
                       setNewAddressData({
@@ -500,6 +504,8 @@ export default function Cart() {
                   <label>Cód. Postal *</label>
                   <input
                     type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     required
                     value={newAddressData.postalCode}
                     onChange={(e) =>

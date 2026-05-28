@@ -52,8 +52,6 @@ export const AuthProvider = ({ children }) => {
       // 1. Seteamos el estado INMEDIATAMENTE
       setUser(userData);
 
-      // 2. Re-sync con /user-management/profile para evitar que falten datos
-      //    hasta que recargues.
       try {
         const profileRes = await API.get("/user-management/profile");
         setUser(profileRes?.data?.body ?? userData);
@@ -83,7 +81,16 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       await API.post("/user", userData);
-      return { success: true };
+
+      // ✅ Fácil: si el alta fue correcta, iniciar sesión automáticamente
+      // (así se crea cookie/token y /user-management/profile ya responde con user)
+      const loginRes = await login(userData.user, userData.password);
+
+      return {
+        success: true,
+        user: loginRes?.user ?? null,
+        message: loginRes?.message,
+      };
     } catch (error) {
       return {
         success: false,

@@ -77,6 +77,8 @@ export default function Home() {
               <div className="product-info">
                 <span className="product-brand">{prod.brand}</span>
                 <h3>{prod.name}</h3>
+                <p className="product-description">{prod.description}</p>
+                <p className="product-category">{prod.category}</p>
                 <p className="product-price">${prod.price}</p>
                 <p className="product-stock">Disponibles: {prod.stock}</p>
 

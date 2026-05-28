@@ -257,6 +257,8 @@ export default function AddressBook() {
                   <label>Número *</label>
                   <input
                     type="number"
+                    min="0"
+                    step="1"
                     required
                     value={addressData.number}
                     onChange={(e) =>
@@ -300,6 +302,8 @@ export default function AddressBook() {
                   <label>Cód. Postal *</label>
                   <input
                     type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     required
                     value={addressData.postalCode}
                     onChange={(e) =>

@@ -534,24 +534,17 @@ export default function Profile() {
                         </td>
                         <td>
                           <strong>{p.name}</strong>
-                          {user?.id_role === ROLES.ADMIN && (
-                            <div className="txt-owner">
-                              @{p.user?.user || p.id_user}
-                            </div>
-                          )}
                         </td>
 
                         <td>
                           <span className="txt-dim">
+                            {p.user?.user || p.id_user}
+                          </span>
+                        </td>
+                        <td>
+                          <span className="txt-dim">
                             {p.brand} | {p.category}
                           </span>
-                          {user?.id_role === ROLES.ADMIN && (
-                            <div className="txt-owner">
-                              {p.nameUser && p.surnameUser
-                                ? `${p.nameUser} ${p.surnameUser}`
-                                : p.sellerName || ""}
-                            </div>
-                          )}
                         </td>
                         <td>
                           <strong className="txt-success">${p.price}</strong>
@@ -731,6 +724,7 @@ export default function Profile() {
                   <label>Precio ($)</label>
                   <input
                     type="number"
+                    min="0"
                     step="0.01"
                     name="price"
                     value={productForm.price}
@@ -742,6 +736,8 @@ export default function Profile() {
                   <label>Stock Disponible</label>
                   <input
                     type="number"
+                    min="0"
+                    step="1"
                     name="stock"
                     value={productForm.stock}
                     onChange={handleProductChange}

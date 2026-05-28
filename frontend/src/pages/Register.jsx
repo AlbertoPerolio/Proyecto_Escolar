@@ -57,7 +57,7 @@ export default function Register() {
       // Ir directo al panel del usuario (perfil) una vez creado
       // (Ajusta el destino si tu panel es otra ruta)
       setTimeout(() => {
-        window.location.href = "/profile";
+        window.location.href = "/";
       }, 300);
     } else {
       setError(result.message);
