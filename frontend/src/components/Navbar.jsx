@@ -51,7 +51,7 @@ export default function Navbar() {
               className="cart-icon-link"
               style={{ marginRight: "15px", fontSize: "1.2rem" }}
             >
-              🛒 Carrito
+              Carrito
             </Link>
 
             <Link to="/login" className="link-login">
