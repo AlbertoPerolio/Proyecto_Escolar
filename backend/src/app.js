@@ -25,7 +25,7 @@ await connect();
 const app = express();
 
 //config CORS
-const allowedOrigins = ["https://proyecto-escolar-sand.vercel.app/"];
+const allowedOrigins = ["https://proyecto-escolar-sand.vercel.app"];
 app.use(
   cors({
     origin: function (origin, callback) {
