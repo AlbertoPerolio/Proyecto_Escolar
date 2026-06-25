@@ -61,52 +61,52 @@ export async function connect() {
     await sequelize.sync({});
     console.log("Tablas sincronizadas");
 
-    // // 🚀 --- CARGA DE DATOS INICIALES (SEEDERS) ---
-    // console.log("Cargando roles y permisos iniciales...");
+    // 🚀 --- CARGA DE DATOS INICIALES (SEEDERS) ---
+    console.log("Cargando roles y permisos iniciales...");
 
-    // // 1. Creamos los Roles obligatorios
-    // // usar findOrCreate evita que se dupliquen si sacás el force: true más adelante
-    // const [clientRole] = await sequelize.models.role.findOrCreate({
-    //   where: { id_role: 1 },
-    //   defaults: { name: "client" },
-    // });
+    // 1. Creamos los Roles obligatorios
+    // usar findOrCreate evita que se dupliquen si sacás el force: true más adelante
+    const [clientRole] = await sequelize.models.role.findOrCreate({
+      where: { id_role: 1 },
+      defaults: { name: "client" },
+    });
 
-    // const [sellerRole] = await sequelize.models.role.findOrCreate({
-    //   where: { id_role: 2 },
-    //   defaults: { name: "seller" },
-    // });
+    const [sellerRole] = await sequelize.models.role.findOrCreate({
+      where: { id_role: 2 },
+      defaults: { name: "seller" },
+    });
 
-    // const [adminRole] = await sequelize.models.role.findOrCreate({
-    //   where: { id_role: 3 },
-    //   defaults: { name: "admin" },
-    // });
+    const [adminRole] = await sequelize.models.role.findOrCreate({
+      where: { id_role: 3 },
+      defaults: { name: "admin" },
+    });
 
-    // // 2. Creamos los Permisos básicos del sistema
-    // const [pCreate] = await sequelize.models.permission.findOrCreate({
-    //   where: { name: "product:create" },
-    //   defaults: { description: "Permite subir productos nuevos" },
-    // });
+    // 2. Creamos los Permisos básicos del sistema
+    const [pCreate] = await sequelize.models.permission.findOrCreate({
+      where: { name: "product:create" },
+      defaults: { description: "Permite subir productos nuevos" },
+    });
 
-    // const [pDelete] = await sequelize.models.permission.findOrCreate({
-    //   where: { name: "product:delete" },
-    //   defaults: { description: "Permite borrar productos del sistema" },
-    // });
+    const [pDelete] = await sequelize.models.permission.findOrCreate({
+      where: { name: "product:delete" },
+      defaults: { description: "Permite borrar productos del sistema" },
+    });
 
-    // const [pUsers] = await sequelize.models.permission.findOrCreate({
-    //   where: { name: "user:manage" },
-    //   defaults: { description: "Permite administrar usuarios (solo Admin)" },
-    // });
+    const [pUsers] = await sequelize.models.permission.findOrCreate({
+      where: { name: "user:manage" },
+      defaults: { description: "Permite administrar usuarios (solo Admin)" },
+    });
 
-    // // 3. Asignamos los permisos a los roles (Tabla intermedia)
-    // // Al "seller" le damos permiso de crear y borrar sus productos
-    // await sellerRole.addPermissions([pCreate, pDelete]);
+    // 3. Asignamos los permisos a los roles (Tabla intermedia)
+    // Al "seller" le damos permiso de crear y borrar sus productos
+    await sellerRole.addPermissions([pCreate, pDelete]);
 
-    // // Al "admin" le damos absolutamente todos los permisos
-    // await adminRole.addPermissions([pCreate, pDelete, pUsers]);
+    // Al "admin" le damos absolutamente todos los permisos
+    await adminRole.addPermissions([pCreate, pDelete, pUsers]);
 
-    // // El "client" no necesita permisos explícitos en esta tabla porque solo compra
+    // El "client" no necesita permisos explícitos en esta tabla porque solo compra
 
-    // console.log("¡Roles, permisos y relaciones inicializadas con éxito!");
+    console.log("¡Roles, permisos y relaciones inicializadas con éxito!");
   } catch (error) {
     console.error("Error al conectar o sincronizar MySQL:", error);
   }

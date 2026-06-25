@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import { config } from "dotenv";
 import multer from "multer";
-import createError from "../Errors/createError.js";
+import createError from "../errors/createError.js";
 
 config();
 

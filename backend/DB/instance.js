@@ -9,14 +9,8 @@ const sequelize = new Sequelize(
   {
     host: config.mysql.host,
     port: config.mysql.port,
-    dialect: "mysql",
+    dialect: "postgres",
     logging: false,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
   },
 );
 
